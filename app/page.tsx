@@ -145,9 +145,9 @@ export default function HomePage() {
         {/* Quick stats */}
         <motion.div className={styles.stats} variants={item}>
           {[
-            { val: '5+', label: 'Years Exp.' },
-            { val: '40+', label: 'Projects' },
-            { val: '10M+', label: 'Users Served' },
+            { val: '6+', label: 'Years Exp.' },
+            { val: '15+', label: 'Microservices' },
+            { val: '12GB+', label: 'Daily Data' },
           ].map(({ val, label }) => (
             <div key={label} className={styles.stat}>
               <span className={styles.statVal}>{val}</span>
@@ -155,17 +155,6 @@ export default function HomePage() {
             </div>
           ))}
         </motion.div>
-      </motion.div>
-
-      {/* Scroll hint */}
-      <motion.div
-        className={styles.scrollHint}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <div className={styles.scrollLine} />
-        <span>Scroll</span>
       </motion.div>
     </section>
   );
