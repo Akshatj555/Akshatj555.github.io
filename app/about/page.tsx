@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import GithubCalendar from '@/components/GithubCalendar';
 import { personalInfo, stats } from '@/lib/data';
 import styles from './page.module.css';
 
@@ -96,6 +97,11 @@ export default function AboutPage() {
           </motion.div>
         </ScrollReveal>
       </div>
+
+      {/* Days I Code - GitHub Contribution Section */}
+      <ScrollReveal delay={0.2}>
+        <GithubCalendar username="Akshatj555" />
+      </ScrollReveal>
     </section>
   );
 }
