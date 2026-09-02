@@ -1,0 +1,182 @@
+.subtitle {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Info cards */
+.infoCol { display: flex; flex-direction: column; gap: 14px; }
+
+.infoCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.infoCardIcon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+.infoCardLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.infoCardValue {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color var(--duration-base) ease;
+}
+
+a.infoCardValue:hover { color: var(--accent-light); }
+
+/* Form */
+.formCol {}
+
+.form {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Floating label inputs */
+.fieldWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 18px 16px 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--duration-base) ease,
+              box-shadow var(--duration-base) ease,
+              background var(--duration-base) ease;
+  resize: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: var(--bg-card-hover);
+}
+
+.label {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+/* Float label up when focused or has value */
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  top: 6px;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--accent-light);
+}
+
+.textarea { padding-top: 22px; }
+
+/* Submit button */
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 0.95rem;
+}
+
+.submitBtn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 28px; }
+  .formRow { grid-template-columns: 1fr; }
+  .form { padding: 24px; }
+}
+
+@media (max-width: 640px) {
+  .infoCard {
+    padding: 14px 12px;
+    gap: 12px;
+  }
+
+  .infoCardIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .infoCardValue {
+    font-size: 0.82rem;
+    word-break: break-all;
+  }
+
+  .form {
+    padding: 18px 14px;
+    gap: 16px;
+  }
+
+  .input {
+    font-size: 0.85rem;
+    padding: 16px 12px 6px;
+  }
+
+  .label {
+    left: 12px;
+    font-size: 0.82rem;
+  }
+}

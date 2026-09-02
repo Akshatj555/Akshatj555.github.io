@@ -1,0 +1,78 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.categoryCard {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 300ms var(--spring);
+}
+
+.categoryCard:hover { transform: translateY(-4px); }
+
+.catHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.catIcon { font-size: 1.4rem; }
+
+.catName {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.skills { display: flex; flex-direction: column; gap: 16px; }
+
+.skillRow { display: flex; flex-direction: column; gap: 8px; }
+
+.skillMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skillName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.skillLevel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-light);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .categoryCard {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .catName {
+    font-size: 0.95rem;
+  }
+
+  .skillName {
+    font-size: 0.82rem;
+  }
+
+  .skillLevel {
+    font-size: 0.68rem;
+  }
+}

@@ -1,0 +1,244 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Text column */
+.textCol { display: flex; flex-direction: column; gap: 24px; }
+
+.bio {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.quickFacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-top: 8px;
+}
+
+.factItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.factIcon { font-size: 1.1rem; }
+
+.factLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.factValue {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* Image column */
+.imageCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 20px;
+  overflow: visible;
+}
+
+.photo {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  transition: transform 400ms var(--ease-out-expo);
+}
+
+.imageWrapper:hover .photo { transform: translate(-6px, -6px); }
+
+.imageBorder {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 2px solid var(--accent);
+  transform: translate(10px, 10px);
+  z-index: 0;
+  transition: transform 400ms var(--ease-out-expo);
+}
+
+.imageWrapper:hover .imageBorder { transform: translate(14px, 14px); }
+
+.imageGlow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 30px;
+  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.imageWrapper:hover .imageGlow { opacity: 1; }
+
+.badge {
+  position: absolute;
+  bottom: -16px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  z-index: 2;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.statCard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 300ms var(--spring), box-shadow 300ms ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .imageCol {
+    order: -1;
+    align-items: center;
+  }
+  .imageWrapper {
+    max-width: 320px;
+    width: 100%;
+  }
+  .photo {
+    max-width: 100%;
+  }
+  .statsGrid {
+    width: 100%;
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bio {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .quickFacts {
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ctaRow a, .ctaRow button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .imageWrapper {
+    max-width: 260px;
+  }
+
+  .badge {
+    bottom: -10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+
+  .statsGrid {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .statCard {
+    padding: 14px;
+  }
+
+  .statValue {
+    font-size: 1.4rem;
+  }
+}
