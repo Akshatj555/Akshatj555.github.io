@@ -167,8 +167,8 @@ export default function HomePage() {
         >
           <div className={styles.illustrationCard}>
             <img
-              src="/developer_illustration.jpg"
-              alt="Male programmer coding software at desk"
+              src="/developer_coding.png"
+              alt="Developer coding programs and analyzing data across multi-monitor setup"
               className={styles.illustrationImg}
             />
             <div className={styles.illustrationGlow} />
