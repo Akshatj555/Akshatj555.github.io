@@ -35,6 +35,11 @@ export const metadata: Metadata = {
   description: 'Personal portfolio of Akshat Jain, a Senior Software Engineer specializing in scalable systems, cloud infrastructure, and full-stack development.',
   keywords: ['Akshat Jain', 'Software Engineer', 'Portfolio', 'Full Stack', 'DevOps', 'Cloud', 'React', 'Next.js'],
   authors: [{ name: 'Akshat Jain' }],
+  icons: {
+    icon: { url: '/favicon.svg', type: 'image/svg+xml' },
+    apple: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     title: 'Akshat Jain — Senior Software Engineer',
     description: 'Personal portfolio of Akshat Jain',
