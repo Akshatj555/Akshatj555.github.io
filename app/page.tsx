@@ -98,64 +98,83 @@ export default function HomePage() {
       {/* Grid decoration */}
       <div className={styles.gridDecor} aria-hidden />
 
-      <motion.div
-        className={styles.content}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        {/* Greeting */}
-        <motion.p className={styles.greeting} variants={item}>
-          <span className={styles.greetingLine} />
-          Hello, I&apos;m
-        </motion.p>
+      <div className={styles.heroRow}>
+        <motion.div
+          className={styles.content}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {/* Greeting */}
+          <motion.p className={styles.greeting} variants={item}>
+            <span className={styles.greetingLine} />
+            Hello, I&apos;m
+          </motion.p>
 
-        {/* Name */}
-        <motion.h1 className={styles.name} variants={item}>
-          <span className="gradient-text">Akshat</span>
-          <br />
-          <span style={{ color: 'var(--text-primary)' }}>Jain</span>
-        </motion.h1>
+          {/* Name */}
+          <motion.h1 className={styles.name} variants={item}>
+            <span className="gradient-text">Akshat</span>
+            <br />
+            <span style={{ color: 'var(--text-primary)' }}>Jain</span>
+          </motion.h1>
 
-        {/* Typewriter role */}
-        <motion.div className={styles.roleWrapper} variants={item}>
-          <span className={styles.roleText}>{typedText}</span>
-          <span className={styles.cursor}>|</span>
+          {/* Typewriter role */}
+          <motion.div className={styles.roleWrapper} variants={item}>
+            <span className={styles.roleText}>{typedText}</span>
+            <span className={styles.cursor}>|</span>
+          </motion.div>
+
+          {/* Description */}
+          <motion.p className={styles.description} variants={item}>
+            Building resilient systems and elegant software that scales. Passionate about cloud
+            infrastructure, developer experience, and writing code that stands the test of time.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div className={styles.ctas} variants={item}>
+            <Link href="/projects" className="btn-accent" id="view-projects-btn">
+              View My Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </Link>
+            <Link href="/contact" className="btn-ghost" id="contact-btn">
+              Get In Touch
+            </Link>
+          </motion.div>
+
+          {/* Quick stats */}
+          <motion.div className={styles.stats} variants={item}>
+            {[
+              { val: '6+', label: 'Years Exp.' },
+              { val: '15+', label: 'Microservices' },
+              { val: '12GB+', label: 'Daily Data' },
+            ].map(({ val, label }) => (
+              <div key={label} className={styles.stat}>
+                <span className={styles.statVal}>{val}</span>
+                <span className={styles.statLabel}>{label}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
-        {/* Description */}
-        <motion.p className={styles.description} variants={item}>
-          Building resilient systems and elegant software that scales. Passionate about cloud
-          infrastructure, developer experience, and writing code that stands the test of time.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div className={styles.ctas} variants={item}>
-          <Link href="/projects" className="btn-accent" id="view-projects-btn">
-            View My Work
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </Link>
-          <Link href="/contact" className="btn-ghost" id="contact-btn">
-            Get In Touch
-          </Link>
+        {/* Developer Illustration */}
+        <motion.div
+          className={styles.illustrationCol}
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        >
+          <div className={styles.illustrationCard}>
+            <img
+              src="/developer_illustration.jpg"
+              alt="Male programmer coding software at desk"
+              className={styles.illustrationImg}
+            />
+            <div className={styles.illustrationGlow} />
+          </div>
         </motion.div>
-
-        {/* Quick stats */}
-        <motion.div className={styles.stats} variants={item}>
-          {[
-            { val: '6+', label: 'Years Exp.' },
-            { val: '15+', label: 'Microservices' },
-            { val: '12GB+', label: 'Daily Data' },
-          ].map(({ val, label }) => (
-            <div key={label} className={styles.stat}>
-              <span className={styles.statVal}>{val}</span>
-              <span className={styles.statLabel}>{label}</span>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
