@@ -16,7 +16,7 @@ export default function ResumePage() {
         <ScrollReveal delay={0.1}>
           <a
             href={personalInfo.resumeUrl}
-            download
+            download="Akshat_Jain_Resume.pdf"
             className={`btn-accent ${styles.downloadBtn}`}
             id="resume-download-btn"
           >
