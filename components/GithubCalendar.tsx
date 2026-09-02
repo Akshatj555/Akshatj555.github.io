@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import styles from './GithubCalendar.module.css';
 
 interface Props {
@@ -90,6 +90,19 @@ export default function GithubCalendar({ username = 'Akshatj555' }: Props) {
     return res;
   }, [days]);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // On mobile devices, automatically slide to the right (showing recent contributions)
+  useEffect(() => {
+    if (!loading && scrollRef.current) {
+      // If mobile / screen width is narrower than content
+      const el = scrollRef.current;
+      if (el.scrollWidth > el.clientWidth) {
+        el.scrollLeft = el.scrollWidth;
+      }
+    }
+  }, [loading, days]);
+
   const monthLabels = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
 
   return (
@@ -99,27 +112,29 @@ export default function GithubCalendar({ username = 'Akshatj555' }: Props) {
       </h2>
 
       <div className={styles.card}>
-        {/* Month labels */}
-        <div className={styles.monthsRow}>
-          {monthLabels.map((m, idx) => (
-            <span key={idx} className={styles.monthLabel}>{m}</span>
-          ))}
-        </div>
+        {/* Heatmap Grid & Months inside scroll wrapper */}
+        <div className={styles.gridScroll} ref={scrollRef}>
+          <div className={styles.scrollInner}>
+            {/* Month labels aligned with grid */}
+            <div className={styles.monthsRow}>
+              {monthLabels.map((m, idx) => (
+                <span key={idx} className={styles.monthLabel}>{m}</span>
+              ))}
+            </div>
 
-        {/* Heatmap Grid */}
-        <div className={styles.gridScroll}>
-          <div className={styles.grid}>
-            {weeks.map((week, wIdx) => (
-              <div key={wIdx} className={styles.weekCol}>
-                {week.map((day, dIdx) => (
-                  <div
-                    key={dIdx}
-                    className={`${styles.cell} ${styles[`level${day.level}`]}`}
-                    title={`${day.date}: ${day.count} contributions`}
-                  />
-                ))}
-              </div>
-            ))}
+            <div className={styles.grid}>
+              {weeks.map((week, wIdx) => (
+                <div key={wIdx} className={styles.weekCol}>
+                  {week.map((day, dIdx) => (
+                    <div
+                      key={dIdx}
+                      className={`${styles.cell} ${styles[`level${day.level}`]}`}
+                      title={`${day.date}: ${day.count} contributions`}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

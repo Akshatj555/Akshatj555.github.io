@@ -36,6 +36,22 @@
   overflow: hidden;
 }
 
+.gridScroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+  scroll-behavior: smooth;
+}
+
+.scrollInner {
+  min-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .monthsRow {
   display: flex;
   justify-content: space-between;
@@ -48,14 +64,6 @@
   font-size: 0.72rem;
   color: var(--text-secondary);
   opacity: 0.8;
-}
-
-.gridScroll {
-  width: 100%;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
 }
 
 .gridScroll::-webkit-scrollbar {
